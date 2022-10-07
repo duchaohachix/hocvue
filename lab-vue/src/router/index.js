@@ -29,7 +29,14 @@ const router = createRouter({
       name: 'album',
       component: Album
     },
+    {
+      path: '/counter',
+      name: 'counter',
+      component: () => import('../views/CounterBasic.vue'),
+      beforeEnter: () => { console.log("before enter") },
+    },
   ]
 })
-
+router.beforeResolve((from, to, next) => { console.log(from, to); next() })
+router.beforeEach((from, to, next) => { console.log(from, to); next() })
 export default router

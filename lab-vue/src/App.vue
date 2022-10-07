@@ -1,8 +1,16 @@
 <script setup>
+import { computed } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
+import { mapGetters } from "vuex";
 </script>
-
+<script>
+export default {
+  computed: {
+    ...mapGetters(["name"]),
+  },
+};
+</script>
 <template>
   <header>
     <img
@@ -14,7 +22,7 @@ import HelloWorld from "./components/HelloWorld.vue";
     />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld :msg="`Hi ${name}`" />
 
       <button class="btn btn-success">Button</button>
 
@@ -26,6 +34,7 @@ import HelloWorld from "./components/HelloWorld.vue";
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/register">Register</RouterLink>
         <RouterLink to="/album">Album</RouterLink>
+        <RouterLink to="/counter">Counter</RouterLink>
       </nav>
     </div>
   </header>
